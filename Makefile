@@ -5,7 +5,7 @@ MKDIR = mkdir -p
 INSTALL = install -c
 # -pie is a linker option. but let's have it in CFLAGS to ensure -fPIE and -pie
 # are ever overridden or not together
-CFLAGS = -Wall -W -O2 -fomit-frame-pointer -fPIE -pie -fstack-protector-strong -D_FORTIFY_SOURCE=2
+CFLAGS = -std=c99 -Wall -W -O2 -fomit-frame-pointer -fPIE -pie -fstack-protector-strong -D_FORTIFY_SOURCE=2
 # Include CFLAGS into LDFLAGS for two reasons:
 # 1. "For predictable results, you must also specify the same set of options
 #    used for compilation (-fpie, -fPIE, or model suboptions) when you specify
