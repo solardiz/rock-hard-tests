@@ -6,3 +6,4 @@ typedef enum {
 } test_result;
 
 extern int glibc_asprintf(void);
+extern int glibc_freadwrite(void);
