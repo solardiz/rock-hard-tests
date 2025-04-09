@@ -6,7 +6,7 @@
 
 int glibc_asprintf(void)
 {
-	const struct rlimit rlim = {};
+	const struct rlimit rlim = {0, 0};
 	if (setrlimit(RLIMIT_AS, &rlim))
 		return TEST_SKIP_FAIL;
 

@@ -28,6 +28,7 @@ int main(void)
 		fflush(stdout);
 
 		test_result result = TEST_SKIP_FAIL;
+		int status;
 		switch (fork()) {
 		case -1:
 			perror("fork");
@@ -37,7 +38,6 @@ int main(void)
 				perror("dup2");
 			return tests[i].test_func();
 		default:
-			int status;
 			if (wait(&status) == -1)
 				perror("wait");
 			else

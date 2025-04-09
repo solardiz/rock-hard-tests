@@ -1,5 +1,6 @@
 /* glibc quick sort test originally by Qualys, enhanced for Rocky Linux */
 
+#define _XOPEN_SOURCE 500
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
