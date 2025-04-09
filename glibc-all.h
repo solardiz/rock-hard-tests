@@ -7,3 +7,4 @@ typedef enum {
 
 extern int glibc_asprintf(void);
 extern int glibc_freadwrite(void);
+extern int glibc_qsort(void);

@@ -10,7 +10,8 @@ static const struct {
 	int (*test_func)(void);
 } tests[] = {
 	{"asprintf", glibc_asprintf},
-	{"fread/fwrite", glibc_freadwrite}
+	{"fread/fwrite", glibc_freadwrite},
+	{"qsort", glibc_qsort}
 };
 
 int main(void)
