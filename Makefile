@@ -19,7 +19,7 @@ PREFIX = /usr/local
 SBINDIR = $(PREFIX)/sbin
 
 PROJ = rock-hard-tests-glibc
-OBJS = glibc-all.o glibc-asprintf.o glibc-freadwrite.o glibc-qsort.o
+OBJS = glibc-all.o glibc-asprintf.o glibc-assert.o glibc-freadwrite.o glibc-qsort.o
 
 all: $(PROJ)
 
