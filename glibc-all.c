@@ -9,10 +9,10 @@ static const struct {
 	char *test_name;
 	int (*test_func)(void);
 } tests[] = {
-	{"asprintf", glibc_asprintf},
-	{"assert", glibc_assert},
-	{"fread/fwrite", glibc_freadwrite},
-	{"qsort", glibc_qsort}
+	{"asprintf(3) should set pointer to NULL on error", glibc_asprintf},
+	{"assert(3) should be unaffected by CVE-2025-0395", glibc_assert},
+	{"fread(3)/fwrite(3) should detect integer overflow", glibc_freadwrite},
+	{"qsort(3) robustness with nontransitive comparison", glibc_qsort}
 };
 
 int main(void)
