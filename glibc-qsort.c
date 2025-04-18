@@ -1,4 +1,10 @@
-/* glibc quick sort test originally by Qualys, enhanced for Rocky Linux */
+/*
+ * glibc qsort() test originally by Qualys Security Advisory team:
+ * https://www.openwall.com/lists/oss-security/2024/01/30/7
+ * Reused here under MIT license with their permission, and enhanced
+ * to be self-contained (no shell script wrapper) and to also test
+ * that the sort order is correct when the comparison function is.
+ */
 
 #define _XOPEN_SOURCE 500
 #include <limits.h>
