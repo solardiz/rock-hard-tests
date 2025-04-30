@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <assert.h>
 #include <stdio.h>
 #include <signal.h>
@@ -47,7 +48,6 @@ int glibc_assert(void)
 	char argv0[0x40 * PAGE_SIZE], msg[sizeof(argv0) + PAGE_SIZE];
 	ssize_t msg_size;
 	memset(argv0, 'a', sizeof(argv0) - 1);
-	__progname = argv0;
 
 	for (int i = sizeof(argv0) - sizeof(MSG_SUFFIX); i > 0; i -= PAGE_SIZE + 2) {
 		argv0[i] = 0;
@@ -70,7 +70,10 @@ int glibc_assert(void)
 				return TEST_SKIP_FAIL;
 			}
 			close(pipefd[1]);
+			char *save_progname = __progname;
+			__progname = argv0;
 			assert(0);
+			__progname = save_progname;
 			return TEST_SKIP_FAIL;
 		default:
 			close(pipefd[1]);
@@ -104,7 +107,9 @@ int glibc_assert(void)
  * in particular no "munmap_chunk(): invalid pointer", which happens when "str"
  * is mapped right after "buf".
  */
-			if (msg_size < i || memcmp(msg + msg_size - (sizeof(MSG_SUFFIX) - 1), MSG_SUFFIX, sizeof(MSG_SUFFIX) - 1))
+			if (msg_size < i) /* __progname not included, maybe not glibc */
+				return TEST_SKIP_FAIL;
+			if (memcmp(msg + msg_size - (sizeof(MSG_SUFFIX) - 1), MSG_SUFFIX, sizeof(MSG_SUFFIX) - 1))
 				return TEST_FAIL;
 		}
 	}
